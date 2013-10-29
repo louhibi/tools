@@ -78,30 +78,30 @@ def import_module(app):
         raise Error_import_app(app, traceback.format_exc())
 
 def initialise_log(self, pathToFile=None, nameFile=None, level=None, uid=False, console=False):
-        """
-        return a logging instance with the right Handler and Formatting
-        """
-        logger = logging.getLogger('simple_example')
-        if pathToFile is not None:
-            pathToLogFile = '%s/%s.log' % (pathToFile, nameFile)
+    """
+    returns a logging instance with the right Handler and Formatting
+    """
+    logger = logging.getLogger('simple_example')
+    if pathToFile is not None:
+        pathToLogFile = '%s/%s.log' % (pathToFile, nameFile)
+    else:
+        if nameFile:
+            pathToLogFile = '/tmp/%s.log' %nameFile
         else:
-            if nameFile:
-                pathToLogFile = '/tmp/%s.log' %nameFile
-            else:
-                console= True
+            console= True
 
-        if console:
-            logHandler = logging.StreamHandler()
-        else:
-            logHandler= logging.FileHandler(pathToLogFile)
+    if console:
+        logHandler = logging.StreamHandler()
+    else:
+        logHandler= logging.FileHandler(pathToLogFile)
 
-        logger.setLevel(level)
-        if not uid:
-            logHandler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', "%Y-%m-%d %H:%M:%S"))
-        else:
-            logHandler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(uid)s - %(message)s', "%Y-%m-%d %H:%M:%S"))
-        logger.addHandler(logHandler)        
-        return logger
+    logger.setLevel(level)
+    if not uid:
+        logHandler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', "%Y-%m-%d %H:%M:%S"))
+    else:
+        logHandler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(uid)s - %(message)s', "%Y-%m-%d %H:%M:%S"))
+    logger.addHandler(logHandler)        
+    return logger
 
 
 class Yaml_object:
