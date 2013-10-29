@@ -66,7 +66,6 @@ def cleanFormatListNumber(Listnumber):
     cleanFormatNumber(514-546-1234) returns 5145461234
     or cleanFormatNumber(514 546 1234) returns 5145461234
     """
-    # print [i for i in Listnumber]
     return [cleanFormatNumber(i) for i in Listnumber]
 
 def import_module(self, app):
