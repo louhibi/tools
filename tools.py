@@ -67,7 +67,7 @@ def cleanFormatListNumber(Listnumber):
     """
     return [cleanFormatNumber(i) for i in Listnumber]
 
-def import_module(self, app):
+def import_module(app):
     """
     @returns the the imported module or it raises an error
     """
