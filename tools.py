@@ -63,8 +63,7 @@ def cleanFormatNumber(number):
 def cleanFormatListNumber(Listnumber):
     """
     Cleans Format a list of Numbers
-    cleanFormatNumber(514-546-1234) returns 5145461234
-    or cleanFormatNumber(514 546 1234) returns 5145461234
+    cleanFormatNumber(["5145461234", "514-546-1234", "514 546-1234"]) returns ["5145461234", "5145461234", "5145461234"]
     """
     return [cleanFormatNumber(i) for i in Listnumber]
 
