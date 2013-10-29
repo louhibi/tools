@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
-
-
 import yaml
 import os
 import traceback
@@ -103,6 +101,16 @@ def initialise_log(self, pathToFile=None, nameFile=None, level=None, uid=False, 
     logger.addHandler(logHandler)        
     return logger
 
+def is_number(number):
+    """
+    returns True if number is digit else False
+    """
+    try:
+        int(number)
+        return True
+    except ValueError:
+        return False
+
 
 class Yaml_object:
     """
@@ -132,3 +140,7 @@ if __name__ == '__main__':
     assert cleanFormatNumber("514 546-1234") == "5145461234"
     assert cleanFormatNumber("5145461234") == "5145461234"
     assert cleanFormatListNumber(["5145461234", "514-546-1234", "514 546-1234"]) == ["5145461234", "5145461234", "5145461234"]
+    assert is_number("25") == True
+    assert is_number("25del") == False
+    assert is_number("del") == False
+    assert is_number("??") == False
